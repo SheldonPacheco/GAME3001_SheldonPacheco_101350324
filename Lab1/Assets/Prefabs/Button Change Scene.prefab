@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7417910524050066185}
   - component: {fileID: 4934983046857433835}
   m_Layer: 5
-  m_Name: Button Next
+  m_Name: Button Change Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
