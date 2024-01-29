@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class AgentMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float maxSpeed;
     private Vector3 targetPosition = Vector3.zero;
     Rigidbody2D rb;
     private void Start()
@@ -60,7 +61,10 @@ public class AgentMovement : MonoBehaviour
         Vector2 desiredVelocity = direction * moveSpeed;
 
         rb.AddForce(desiredVelocity - currentVelocity);
-
+        if (desiredVelocity.magnitude > maxSpeed)
+        {
+            desiredVelocity = desiredVelocity.normalized * maxSpeed;
+        }
         LookAt2D(target);
     }
     void LookAt2D(Vector3 target)
