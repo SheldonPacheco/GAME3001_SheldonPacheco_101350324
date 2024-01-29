@@ -3,28 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class AgentMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxSpeed;
     private Vector3 targetPosition = Vector3.zero;
+    private GameObject target;
     Rigidbody2D rb;
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        Vector2 a = new Vector2 (2.0f, 3.0f);
-        Vector2 b = new Vector2(10.0f, 12.0f);
-        Vector2 ab = b - a;
-        Vector2 n1 = ab.normalized;
-        Vector2 n2 = ab / MathF.Sqrt(ab.x * ab.x + ab.y *ab.y);
-        float length1 = n1.magnitude;
-        float length2 = n2.magnitude;
-        Debug.Log(n1);
-        Debug.Log(n2);
-        Debug.Log(length1);
-        Debug.Log(length2); 
+        target = new GameObject("target");
         
+        //Vector2 a = new Vector2 (2.0f, 3.0f);
+        //Vector2 b = new Vector2(10.0f, 12.0f);
+        //Vector2 ab = b - a;
+        // Vector2 n1 = ab.normalized;
+        // Vector2 n2 = ab / MathF.Sqrt(ab.x * ab.x + ab.y *ab.y);
+        // float length1 = n1.magnitude;
+        // float length2 = n2.magnitude;
+        // Debug.Log(n1);
+        // Debug.Log(n2);
+        // Debug.Log(length1);
+        // Debug.Log(length2);
+
     }
     void Update()
     {
@@ -34,12 +38,13 @@ public class AgentMovement : MonoBehaviour
         {
             // Convert mouse position to world position.
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition.z = 0f; // Ensure the Z-coordinate is correct for a 2D game  .     
+            targetPosition.z = 0f; // Ensure the Z-coordinate is correct for a 2D game  .
+            target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, 0f);
         }
         Seek(targetPosition);
         //Vector3 direction  = (targetPosition - transform.position).normalized;  
-        
-       // transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+        // transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
 
         //float distance = Mathf.Min(moveSpeed * Time.deltaTime, (targetPosition - transform.position).magnitude;
         //transform.position += (targetPosition - transform.position).normalized * moveSpeed * Time.deltaTime;
@@ -49,7 +54,7 @@ public class AgentMovement : MonoBehaviour
         // the seeker must contain a rigidbody, amd a maximum speed. all the target needs is a position
         //Vector2 currentVelocity = rb.velocity;
         //Vector2 desiredVelocity = direction * moveSpeed;
-       // rb.AddForce(desiredVelocity - currentVelocity);
+        // rb.AddForce(desiredVelocity - currentVelocity);
         // Rotate to look at the target position.
         
     }
