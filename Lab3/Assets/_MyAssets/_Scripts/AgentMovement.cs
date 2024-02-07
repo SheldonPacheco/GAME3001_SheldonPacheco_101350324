@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
@@ -8,10 +9,11 @@ using static UnityEngine.GraphicsBuffer;
 public class AgentMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-
     private Vector3 targetPosition = Vector3.zero;
     private GameObject target;
+    public Transform planet;
     Rigidbody2D rb;
+    public float raySpread = 10.0f;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -60,10 +62,30 @@ public class AgentMovement : MonoBehaviour
     }
     void Seek(Vector3 target)
     {
-        Vector3 direction = (target - transform.position).normalized;
+        
 
         Vector2 currentVelocity = rb.velocity;
-        Vector2 desiredVelocity = direction * moveSpeed;
+        Vector2 desiredVelocity = (target - transform.position).normalized * moveSpeed;
+        
+
+        Vector3 leftDirection = Quaternion.Euler(0.0f, 0.0f, raySpread) * transform.right;
+        Vector3 rightDirection = Quaternion.Euler(0.0f, 0.0f, -raySpread) * transform.right;
+
+        RaycastHit2D lefthit = Physics2D.Raycast(transform.position+leftDirection, leftDirection);
+        RaycastHit2D righthit = Physics2D.Raycast(transform.position + rightDirection, rightDirection);
+        if (lefthit.collider != null&&!lefthit.collider.CompareTag("Player"))
+        {
+            desiredVelocity += new Vector2(transform.up.x, transform.up.y)* moveSpeed * -1.0f;
+           // Debug.Log("hit:"+lefthit.collider.gameObject.name);
+        }
+        else if (righthit.collider != null && !righthit.collider.CompareTag("Player"))
+        {
+            desiredVelocity += new Vector2(transform.up.x, transform.up.y) * moveSpeed;
+            //Debug.Log("hit:" + righthit.collider.gameObject.name);
+        }
+        Debug.DrawLine(transform.position, transform.position + leftDirection * raySpread);
+        Debug.DrawLine(transform.position, transform.position + rightDirection * raySpread);
+        //Debug.DrawLine(transform.position, transform.position+transform.right * 10f);    
 
         rb.AddForce(desiredVelocity - currentVelocity);
 

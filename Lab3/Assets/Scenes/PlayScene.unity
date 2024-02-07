@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Starship
       objectReference: {fileID: 0}
+    - target: {fileID: 3275328437032952400, guid: 24fe13f212ff35d4da5de9817b95fadb, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 4831582888393251683, guid: 24fe13f212ff35d4da5de9817b95fadb, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
@@ -271,6 +275,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8770578249153991429, guid: 24fe13f212ff35d4da5de9817b95fadb, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -279,6 +287,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1427352338}
   m_SourcePrefab: {fileID: 100100000, guid: 24fe13f212ff35d4da5de9817b95fadb, type: 3}
+--- !u!4 &366586774 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2803132891186600804, guid: b0f7a8732335dbb429cd4c26c4aa261b, type: 3}
+  m_PrefabInstance: {fileID: 1573108920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +503,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  maxSpeed: 1
+  planet: {fileID: 366586774}
+  raySpread: 10
 --- !u!1001 &1573108920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -501,11 +515,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2803132891186600804, guid: b0f7a8732335dbb429cd4c26c4aa261b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.29
+      value: 3.51
       objectReference: {fileID: 0}
     - target: {fileID: 2803132891186600804, guid: b0f7a8732335dbb429cd4c26c4aa261b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.28
+      value: -0.91
       objectReference: {fileID: 0}
     - target: {fileID: 2803132891186600804, guid: b0f7a8732335dbb429cd4c26c4aa261b, type: 3}
       propertyPath: m_LocalPosition.z

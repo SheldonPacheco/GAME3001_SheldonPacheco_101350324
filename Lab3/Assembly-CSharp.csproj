@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DDEF2E0A-5C3A-95E3-CBE5-C1365615EF7B}</ProjectGuid>
+    <ProjectGuid>{D0BED4D0-5930-8FBE-A81A-8226F4259727}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -60,6 +60,7 @@
     <Analyzer Include="C:\Program Files\Unity 2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_MyAssets\_Scripts\Steering.cs" />
     <Compile Include="Assets\_MyAssets\_Scripts\SceneChangeButton.cs" />
     <Compile Include="Assets\_MyAssets\_Scripts\AgentMovement.cs" />
     <Compile Include="Assets\_MyAssets\_Scripts\SceneLoader.cs" />
