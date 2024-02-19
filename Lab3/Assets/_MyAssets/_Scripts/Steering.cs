@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Steering
+public class Steering
 {
-    public static Vector3 Seek(Vector3 seekerPosition, Vector3 seekerVelocity, float movespeed)
+    public static Vector3 Seek(Vector3 seekerPosition, Vector3 seekerVelocity, float moveSpeed, Vector3 targetPosition)
     {
-        return (seekerPosition);
+        Vector3 desiredVelocity = (targetPosition - seekerPosition).normalized * moveSpeed;
+
+        // Add other behaviors here if needed
+
+        return desiredVelocity;
     }
 }

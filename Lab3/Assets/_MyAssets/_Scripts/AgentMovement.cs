@@ -14,11 +14,12 @@ public class AgentMovement : MonoBehaviour
     public Transform planet;
     Rigidbody2D rb;
     public float raySpread = 10.0f;
+    public static Steering steering;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         target = new GameObject("target");
-        
+
         //Vector2 a = new Vector2 (2.0f, 3.0f);
         //Vector2 b = new Vector2(10.0f, 12.0f);
         //Vector2 ab = b - a;
@@ -34,16 +35,49 @@ public class AgentMovement : MonoBehaviour
     }
     void Update()
     {
-        
+
         // Check for mouse input.
         if (Input.GetMouseButton(0))
         {
-            // Convert mouse position to world position.
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            targetPosition.z = 0f; // Ensure the Z-coordinate is correct for a 2D game  .
+            targetPosition.z = 0f;
             target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, 0f);
         }
-        Seek(targetPosition);
+
+        Vector3 steeringForce = Steering.Seek(transform.position, rb.velocity, moveSpeed, targetPosition);
+        
+        Vector3 leftDirection = Quaternion.Euler(0.0f, 0.0f, raySpread) * transform.right;
+        RaycastHit2D lefthit = Physics2D.Raycast(transform.position + leftDirection, leftDirection);
+        if (lefthit.collider != null && !lefthit.collider.CompareTag("Player"))
+        {
+            steeringForce += new Vector3(transform.up.x, transform.up.y) * moveSpeed * -1.0f;
+        }
+        Vector3 middleLeftDirection = Quaternion.Euler(0.0f, 0.0f, raySpread / 2.0f) * transform.right;
+        RaycastHit2D middleLeftHit = Physics2D.Raycast(transform.position + middleLeftDirection, middleLeftDirection);
+        if (middleLeftHit.collider != null && !middleLeftHit.collider.CompareTag("Player"))
+        {
+            steeringForce += new Vector3(transform.up.x, transform.up.y) * moveSpeed * -0.5f;
+        }    
+        Vector3 middleRightDirection = Quaternion.Euler(0.0f, 0.0f, -raySpread / 2.0f) * transform.right;
+        RaycastHit2D middleRightHit = Physics2D.Raycast(transform.position + middleRightDirection, middleRightDirection);
+        if (middleRightHit.collider != null && !middleRightHit.collider.CompareTag("Player"))
+        {
+            steeringForce += new Vector3(transform.up.x, transform.up.y) * moveSpeed * -0.5f;
+        }
+        Vector3 rightDirection = Quaternion.Euler(0.0f, 0.0f, -raySpread) * transform.right;
+        RaycastHit2D righthit = Physics2D.Raycast(transform.position + rightDirection, rightDirection);
+        if (righthit.collider != null && !righthit.collider.CompareTag("Player"))
+        {
+            steeringForce += new Vector3(transform.up.x, transform.up.y) * moveSpeed;
+        }
+
+        Debug.DrawLine(transform.position, transform.position + leftDirection * raySpread);
+        Debug.DrawLine(transform.position, transform.position + middleLeftDirection * raySpread);
+        Debug.DrawLine(transform.position, transform.position + middleRightDirection * raySpread);
+        Debug.DrawLine(transform.position,transform.position + rightDirection * raySpread);
+        ApplySteering(steeringForce);
+
+        LookAt2D(targetPosition);
         //Vector3 direction  = (targetPosition - transform.position).normalized;  
 
         // transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
@@ -58,44 +92,20 @@ public class AgentMovement : MonoBehaviour
         //Vector2 desiredVelocity = direction * moveSpeed;
         // rb.AddForce(desiredVelocity - currentVelocity);
         // Rotate to look at the target position.
-        
+
     }
-    void Seek(Vector3 target)
+    void ApplySteering(Vector2 steeringForce)
     {
-        
-
         Vector2 currentVelocity = rb.velocity;
-        Vector2 desiredVelocity = (target - transform.position).normalized * moveSpeed;
-        
-
-        Vector3 leftDirection = Quaternion.Euler(0.0f, 0.0f, raySpread) * transform.right;
-        Vector3 rightDirection = Quaternion.Euler(0.0f, 0.0f, -raySpread) * transform.right;
-
-        RaycastHit2D lefthit = Physics2D.Raycast(transform.position+leftDirection, leftDirection);
-        RaycastHit2D righthit = Physics2D.Raycast(transform.position + rightDirection, rightDirection);
-        if (lefthit.collider != null&&!lefthit.collider.CompareTag("Player"))
-        {
-            desiredVelocity += new Vector2(transform.up.x, transform.up.y)* moveSpeed * -1.0f;
-           // Debug.Log("hit:"+lefthit.collider.gameObject.name);
-        }
-        else if (righthit.collider != null && !righthit.collider.CompareTag("Player"))
-        {
-            desiredVelocity += new Vector2(transform.up.x, transform.up.y) * moveSpeed;
-            //Debug.Log("hit:" + righthit.collider.gameObject.name);
-        }
-        Debug.DrawLine(transform.position, transform.position + leftDirection * raySpread);
-        Debug.DrawLine(transform.position, transform.position + rightDirection * raySpread);
-        //Debug.DrawLine(transform.position, transform.position+transform.right * 10f);    
-
-        rb.AddForce(desiredVelocity - currentVelocity);
-
-        LookAt2D(target);
+        rb.AddForce(steeringForce - currentVelocity);
     }
+
+
     void LookAt2D(Vector3 target)
     {
         Vector3 lookDirection = target - transform.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0.0f,0.0f, angle);
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
     }
+   
 }
-
