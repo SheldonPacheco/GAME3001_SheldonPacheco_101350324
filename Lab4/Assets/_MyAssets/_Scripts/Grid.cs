@@ -25,6 +25,8 @@ public class Grid : MonoBehaviour
     int rowCount = 10;      // vertical tile count
     int colCount = 18;      // horizontal tile count
     Vector2Int goalTile;
+    Vector2Int startTile;
+    TileType tileState = TileType.INVALID;  
     int[,] tiles =
     {
         { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 },
@@ -41,8 +43,8 @@ public class Grid : MonoBehaviour
 
     void Start()
     {
-        float xStart = -8.379f;    // left (-x)
-        float yStart = -4.491f;    // bottom (-y)
+        float xStart = -8.4983f;    // left (-x)
+        float yStart = -4.4963f;    // bottom (-y)
         float x = xStart;
         float y = yStart;
 
@@ -59,9 +61,10 @@ public class Grid : MonoBehaviour
             x = xStart;
             y += 1.0f;
         }
-
-       
-        goalTile = new Vector2Int(colCount - 1, rowCount - 1);
+        startTile = new Vector2Int(17, 4); //right most side
+        goalTile = new Vector2Int(0, 4); //left most side
+        tiles[startTile.y, startTile.x] = (int)TileType.STONE;
+        tiles[goalTile.y, goalTile.x] = (int)TileType.STONE;
     }
 
     void Update()
@@ -69,15 +72,27 @@ public class Grid : MonoBehaviour
         ColorGrid();
         Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2Int cell = WorldToGrid(mouse);
-        grid[cell.y][cell.x].GetComponent<SpriteRenderer>().color = TileColor(TileType.INVALID);
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            int state = (int)tileState;
+            ++state;
+            state %= (int)TileType.INVALID;
+            tileState = (TileType)state;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            tileState = TileType.INVALID;
+        }
 
-        grid[cell.y][cell.x].GetComponent<SpriteRenderer>().color = TileColor(TileType.INVALID);
-        grid[cell.y][cell.x].GetComponent<SpriteRenderer>().color = TileColor(TileType.INVALID);
-        grid[cell.y][cell.x].GetComponent<SpriteRenderer>().color = TileColor(TileType.INVALID);
-        grid[cell.y][cell.x].GetComponent<SpriteRenderer>().color = TileColor(TileType.INVALID);
-
+        if (Input.GetKeyDown(KeyCode.Space) && tileState != TileType.INVALID)
+        {
+            tiles[cell.y, cell.x] = (int)tileState;
+        }
+        grid[cell.y][cell.x].GetComponent<SpriteRenderer>().color = TileColor((TileType)tileState);
+        Debug.Log("Mouse Position: " + mouse + " - Grid Cell: " + cell);
         Costs(cell, goalTile, (TileType)tiles[cell.y, cell.x]);
     }
+
 
     void ColorGrid()
     {
@@ -116,9 +131,9 @@ public class Grid : MonoBehaviour
         return color;
     }
 
-    List<GameObject> Neighbours(Vector2Int cell)
+    List<Vector2Int> Neighbours(Vector2Int cell)
     {
-        List<GameObject> neighbours = new List<GameObject>();
+        List<Vector2Int> neighbours = new List<Vector2Int>();
 
         for (int row = -1; row <= 1; row++)
         {
@@ -127,17 +142,19 @@ public class Grid : MonoBehaviour
                 int newRow = cell.y + row;
                 int newCol = cell.x + col;
 
-                if (newRow >= 0 && newRow < rowCount && newCol >= 0 && newCol < colCount &&
-                    (row != 0 || col != 0))
+                if ((row != 0 || col != 0) && IsValidPosition(new Vector2Int(newCol, newRow)))
                 {
-                    neighbours.Add(grid[newRow][newCol]);
+                    neighbours.Add(new Vector2Int(newCol, newRow));
                 }
             }
         }
 
         return neighbours;
     }
-
+    bool IsValidPosition(Vector2Int position)
+    {
+        return position.x >= 0 && position.x < colCount && position.y >= 0 && position.y < rowCount;
+    }
     float TerrainCost(TileType type)
     {
         switch (type)
@@ -154,43 +171,31 @@ public class Grid : MonoBehaviour
                 return Mathf.Infinity;
         }
     }
-
-    float DistanceCost(Vector2Int start, Vector2Int end)
-    {
-        return Mathf.Abs(end.x - start.x) + Mathf.Abs(end.y - start.y);
-    }
-
     float TotalCost(Vector2Int start, Vector2Int end, TileType type)
     {
         float terrainCost = TerrainCost(type);
-        float distanceCost = DistanceCost(start, end);
+        float distanceCost = Mathf.Abs(end.x - start.x) + Mathf.Abs(end.y - start.y);
         return terrainCost + distanceCost;
     }
 
     void Costs(Vector2Int currentCell, Vector2Int goal, TileType currentType)
     {
-        List<GameObject> neighbours = Neighbours(currentCell);
-        foreach (var neighbour in neighbours)
+        List<Vector2Int> neighbours = Neighbours(currentCell);
+        foreach (var neighbourCell in neighbours)
         {
-            Vector2Int neighbourCell = WorldToGrid(neighbour.transform.position);
             TileType neighbourType = (TileType)tiles[neighbourCell.y, neighbourCell.x];
             float cost = TotalCost(neighbourCell, goal, neighbourType);
             Debug.Log("Cost for neighbor at (" + neighbourCell.x + ", " + neighbourCell.y + "): " + cost);
         }
     }
-
     Vector2Int WorldToGrid(Vector2 position)
     {
-        Vector2Int cell = new Vector2Int((int)position.x, (int)position.y);
-        cell.x = Mathf.Clamp(cell.x, 0, colCount - 1);
-        cell.y = Mathf.Clamp(cell.y, 0, rowCount - 1);
-        return cell;
-    }
+        int col = Mathf.FloorToInt((position.x + 8.4983f));
+        int row = Mathf.FloorToInt((position.y + 4.4963f));
 
-    Vector2 GridToWorld(Vector2Int cell)
-    {
-        cell.x = Mathf.Clamp(cell.x, 0, colCount - 1);
-        cell.y = Mathf.Clamp(cell.y, 0, rowCount - 1);
-        return new Vector2(cell.x + 0.5f, cell.y + 0.5f);
+        col = Mathf.Clamp(col, 0, colCount - 1);
+        row = Mathf.Clamp(row, 0, rowCount - 1);
+
+        return new Vector2Int(col, row);
     }
 }
