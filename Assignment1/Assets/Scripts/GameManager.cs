@@ -236,6 +236,10 @@ public class GameManager : MonoBehaviour
     {
         return agent.GetComponent<Animator>();
     }
+    private MusicPlayer GetMusicPlayer()
+    {
+        return FindObjectOfType<MusicPlayer>();
+    }
     private void CheckCollision()
     {
         
@@ -246,8 +250,8 @@ public class GameManager : MonoBehaviour
             if (distanceFromTarget < 1.2f)
             {
                 GetAnimator().Play("MeleeAttack");
-                MusicPlayer musicPlayer = FindObjectOfType<MusicPlayer>();
-                musicPlayer.PlayDeathSound();
+                
+                FindObjectOfType<MusicPlayer>().PlayDeathSound();
                 Destroy(target);
                 GetAnimator().SetBool("Walking", false);
                 startArrival = false;
