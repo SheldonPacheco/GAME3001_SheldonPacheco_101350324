@@ -62,10 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_MyAssets\_Scripts\Steering.cs" />
+    <Compile Include="Assets\_MyAssets\_Scripts\Pathing.cs" />
     <Compile Include="Assets\_MyAssets\_Scripts\Grid.cs" />
     <Compile Include="Assets\_MyAssets\_Scripts\SceneChangeButton.cs" />
+    <Compile Include="Assets\Utils\Utils.cs" />
     <Compile Include="Assets\_MyAssets\_Scripts\AgentMovement.cs" />
     <Compile Include="Assets\_MyAssets\_Scripts\SceneLoader.cs" />
+    <Compile Include="Assets\_MyAssets\_Scripts\PriorityQueue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
