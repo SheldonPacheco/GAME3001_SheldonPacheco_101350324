@@ -1,0 +1,1003 @@
+fileFormatVersion: 2
+guid: 667d74d9f2d15c24eb138bcac3490b5a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2859839040375906551
+    second: TitleScreenText_0
+  - first:
+      213: 5960446965166955099
+    second: TitleScreenText_1
+  - first:
+      213: 8809139437579075747
+    second: TitleScreenText_2
+  - first:
+      213: 5314183181086268452
+    second: TitleScreenText_3
+  - first:
+      213: 3056628366425256651
+    second: TitleScreenText_4
+  - first:
+      213: 4728173636042970743
+    second: TitleScreenText_5
+  - first:
+      213: 6930114092020476864
+    second: TitleScreenText_6
+  - first:
+      213: 8776856437515770177
+    second: TitleScreenText_7
+  - first:
+      213: 2789229293195518982
+    second: TitleScreenText_8
+  - first:
+      213: -1505235120112838521
+    second: TitleScreenText_9
+  - first:
+      213: 5689037444321229078
+    second: TitleScreenText_10
+  - first:
+      213: -1013775233801441121
+    second: TitleScreenText_11
+  - first:
+      213: 445796560845544560
+    second: TitleScreenText_12
+  - first:
+      213: -2666962811470879937
+    second: TitleScreenText_13
+  - first:
+      213: -7410340932930089835
+    second: TitleScreenText_14
+  - first:
+      213: 5680503245461926203
+    second: TitleScreenText_15
+  - first:
+      213: 7726278779040314435
+    second: TitleScreenText_16
+  - first:
+      213: 6142280266426365325
+    second: TitleScreenText_17
+  - first:
+      213: -4393482774407012735
+    second: TitleScreenText_18
+  - first:
+      213: 5197693452606016876
+    second: TitleScreenText_19
+  - first:
+      213: -6184272460768732341
+    second: TitleScreenText_20
+  - first:
+      213: 407498306101521385
+    second: TitleScreenText_21
+  - first:
+      213: 5496799413626387589
+    second: TitleScreenText_22
+  - first:
+      213: 3958696515603751994
+    second: TitleScreenText_23
+  - first:
+      213: 4356637832614985421
+    second: TitleScreenText_24
+  - first:
+      213: -1556052146222041075
+    second: TitleScreenText_25
+  - first:
+      213: -8958238831946120901
+    second: TitleScreenText_26
+  - first:
+      213: -5778342493987791807
+    second: TitleScreenText_27
+  - first:
+      213: -8546877410536503546
+    second: TitleScreenText_28
+  - first:
+      213: 2119677276114478173
+    second: TitleScreenText_29
+  - first:
+      213: 3756698043646690067
+    second: TitleScreenText_30
+  - first:
+      213: -5933991827875929998
+    second: TitleScreenText_31
+  - first:
+      213: -8655577521134738609
+    second: TitleScreenText_32
+  - first:
+      213: 4339257230264448017
+    second: TitleScreenText_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TitleScreenText_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 216
+        width: 43
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f06664847030b720800000000000000
+      internalID: 2859839040375906551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_1
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 219
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5ad45d5fe2c7b250800000000000000
+      internalID: 5960446965166955099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_2
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 218
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a009c945a9504a70800000000000000
+      internalID: 8809139437579075747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_3
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 242
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42c900c8275cfb940800000000000000
+      internalID: 5314183181086268452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_4
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 220
+        width: 42
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc2f827fd435b6a20800000000000000
+      internalID: 3056628366425256651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_5
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 220
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77655bcfed8dd9140800000000000000
+      internalID: 4728173636042970743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_6
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 220
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb2fc3ac06bc2060800000000000000
+      internalID: 6930114092020476864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_7
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 223
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1495aba9d68adc970800000000000000
+      internalID: 8776856437515770177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_8
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 223
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6046802a34555b620800000000000000
+      internalID: 2789229293195518982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_9
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 218
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7885b3222a45c1be0800000000000000
+      internalID: -1505235120112838521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_10
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 208
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 619b9aee96583fe40800000000000000
+      internalID: 5689037444321229078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_11
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 170
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f903d2bcbc85ee1f0800000000000000
+      internalID: -1013775233801441121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_12
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 166
+        width: 26
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07c1a433c99cf2600800000000000000
+      internalID: 445796560845544560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_13
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 167
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f33e911047b0dfad0800000000000000
+      internalID: -2666962811470879937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_14
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 165
+        width: 8
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59c4a24ee2e292990800000000000000
+      internalID: -7410340932930089835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_15
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 163
+        width: 22
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b31363bea9335de40800000000000000
+      internalID: 5680503245461926203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_16
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 162
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 344365c2d91493b60800000000000000
+      internalID: 7726278779040314435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_17
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 157
+        width: 33
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d853c3feb53cd3550800000000000000
+      internalID: 6142280266426365325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_18
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 158
+        width: 23
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e1ca0c1b63703c0800000000000000
+      internalID: -4393482774407012735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_19
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 158
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6d84f518aae12840800000000000000
+      internalID: 5197693452606016876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_20
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 155
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4b16ad66fc0d2aa0800000000000000
+      internalID: -6184272460768732341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_21
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 152
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eb21c5ec89b7a500800000000000000
+      internalID: 407498306101521385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_22
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 152
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58cb6c281fd884c40800000000000000
+      internalID: 5496799413626387589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_23
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 147
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a346322c18d10f630800000000000000
+      internalID: 3958696515603751994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_24
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 149
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dce3b0cb603e57c30800000000000000
+      internalID: 4356637832614985421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_25
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 110
+        width: 6
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d08737c31dac76ae0800000000000000
+      internalID: -1556052146222041075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_26
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 110
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b31cdb0ce31fda380800000000000000
+      internalID: -8958238831946120901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_27
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 112
+        width: 6
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c105fdd143fcfa0800000000000000
+      internalID: -5778342493987791807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_28
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 111
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60749264744636980800000000000000
+      internalID: -8546877410536503546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_29
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 112
+        width: 21
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d546549804b9a6d10800000000000000
+      internalID: 2119677276114478173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_30
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 112
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31347f387f8722430800000000000000
+      internalID: 3756698043646690067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_31
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 112
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27062674fd936ada0800000000000000
+      internalID: -5933991827875929998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_32
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 116
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4368ee8a1631e780800000000000000
+      internalID: -8655577521134738609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TitleScreenText_33
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 113
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11435f6e573283c30800000000000000
+      internalID: 4339257230264448017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      TitleScreenText_0: 2859839040375906551
+      TitleScreenText_1: 5960446965166955099
+      TitleScreenText_10: 5689037444321229078
+      TitleScreenText_11: -1013775233801441121
+      TitleScreenText_12: 445796560845544560
+      TitleScreenText_13: -2666962811470879937
+      TitleScreenText_14: -7410340932930089835
+      TitleScreenText_15: 5680503245461926203
+      TitleScreenText_16: 7726278779040314435
+      TitleScreenText_17: 6142280266426365325
+      TitleScreenText_18: -4393482774407012735
+      TitleScreenText_19: 5197693452606016876
+      TitleScreenText_2: 8809139437579075747
+      TitleScreenText_20: -6184272460768732341
+      TitleScreenText_21: 407498306101521385
+      TitleScreenText_22: 5496799413626387589
+      TitleScreenText_23: 3958696515603751994
+      TitleScreenText_24: 4356637832614985421
+      TitleScreenText_25: -1556052146222041075
+      TitleScreenText_26: -8958238831946120901
+      TitleScreenText_27: -5778342493987791807
+      TitleScreenText_28: -8546877410536503546
+      TitleScreenText_29: 2119677276114478173
+      TitleScreenText_3: 5314183181086268452
+      TitleScreenText_30: 3756698043646690067
+      TitleScreenText_31: -5933991827875929998
+      TitleScreenText_32: -8655577521134738609
+      TitleScreenText_33: 4339257230264448017
+      TitleScreenText_4: 3056628366425256651
+      TitleScreenText_5: 4728173636042970743
+      TitleScreenText_6: 6930114092020476864
+      TitleScreenText_7: 8776856437515770177
+      TitleScreenText_8: 2789229293195518982
+      TitleScreenText_9: -1505235120112838521
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
