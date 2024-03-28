@@ -9,7 +9,7 @@ public class Actor : MonoBehaviour
     private int currentWaypointIndex = 0;
     private TileType[,] tileTypes;
     float timer = 0;
-    bool goalSoundPlayed = false; // Flag to track if the goal sound has been played
+    bool goalSoundPlayed = false;
 
     public void SetPath(List<Vector2Int> path, TileType[,] types)
     {
@@ -21,7 +21,7 @@ public class Actor : MonoBehaviour
         timer = 4.65f;
         SoundManager.Instance.StopSFX(SoundManager.Instance.goalReached);
         SoundManager.Instance.soundFXSource.volume = 0.3f;
-        goalSoundPlayed = false; // Reset the flag when a new path is set
+        goalSoundPlayed = false; 
     }
 
     void Update()
@@ -42,7 +42,7 @@ public class Actor : MonoBehaviour
         {
             if (currentWaypointIndex == path.Count - 1)
             {
-                if (!goalSoundPlayed) // Check if the goal sound has been played
+                if (!goalSoundPlayed) 
                 {
                     timer -= Time.deltaTime;
                     SoundManager.Instance.soundFXSource.volume = 0.30f;
@@ -52,7 +52,7 @@ public class Actor : MonoBehaviour
                     {
                         SoundManager.Instance.StopSFX(SoundManager.Instance.goalReached);
                     }
-                    goalSoundPlayed = true; // Set the flag to indicate that the goal sound has been played
+                    goalSoundPlayed = true; 
                 }
             }
             else
