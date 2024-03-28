@@ -4,12 +4,14 @@ using UnityEngine;
 public class Actor : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public SpriteRenderer spriteRenderer; 
+    public SpriteRenderer spriteRenderer;
     private List<Vector2Int> path = new List<Vector2Int>();
     private int currentWaypointIndex = 0;
-    private TileType[,] tileTypes; 
-    float timer = 0;    
-    public void SetPath(List<Vector2Int> path, TileType[,] types) 
+    private TileType[,] tileTypes;
+    float timer = 0;
+    bool goalSoundPlayed = false; // Flag to track if the goal sound has been played
+
+    public void SetPath(List<Vector2Int> path, TileType[,] types)
     {
         this.path = path;
         currentWaypointIndex = 0;
@@ -19,13 +21,13 @@ public class Actor : MonoBehaviour
         timer = 4.65f;
         SoundManager.Instance.StopSFX(SoundManager.Instance.goalReached);
         SoundManager.Instance.soundFXSource.volume = 0.3f;
+        goalSoundPlayed = false; // Reset the flag when a new path is set
     }
 
     void Update()
     {
         if (path.Count == 0 || currentWaypointIndex >= path.Count)
         {
-
             return;
         }
 
@@ -36,19 +38,22 @@ public class Actor : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         spriteRenderer.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-
         if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
         {
             if (currentWaypointIndex == path.Count - 1)
             {
-                timer -= Time.deltaTime;
-                SoundManager.Instance.soundFXSource.volume = 0.010f;
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.goalReached);
-                gameObject.GetComponent<Animator>().SetBool("Walking", false);
-                if (timer <= 0)
+                if (!goalSoundPlayed) // Check if the goal sound has been played
                 {
-                    SoundManager.Instance.StopSFX(SoundManager.Instance.goalReached);
-                }             
+                    timer -= Time.deltaTime;
+                    SoundManager.Instance.soundFXSource.volume = 0.30f;
+                    SoundManager.Instance.PlaySFX(SoundManager.Instance.goalReached);
+                    gameObject.GetComponent<Animator>().SetBool("Walking", false);
+                    if (timer <= 0)
+                    {
+                        SoundManager.Instance.StopSFX(SoundManager.Instance.goalReached);
+                    }
+                    goalSoundPlayed = true; // Set the flag to indicate that the goal sound has been played
+                }
             }
             else
             {
@@ -61,6 +66,5 @@ public class Actor : MonoBehaviour
     private void Start()
     {
         transform.position = Map.GetStart();
-        
     }
 }
