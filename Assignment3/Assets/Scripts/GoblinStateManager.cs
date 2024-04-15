@@ -33,6 +33,7 @@ public class GoblinStateManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (currentState == GoblinState.Idle)
         {
+            GetComponent<Animator>().SetBool("Walking", false);
             if (CanSeePlayer())
             {
                 currentState = GoblinState.MoveTowardsPlayer;
@@ -47,19 +48,12 @@ public class GoblinStateManager : MonoBehaviour
                         currentState = GoblinState.Idle;
                         GoblinStateTextUpdate();
                         idleTimer = idleTime;
-                        if (CanSeePlayer())
-                        {
-                            currentState = GoblinState.MoveTowardsPlayer;
-                        }
                     }
                     else
                     {
                         currentState = GoblinState.Patrol;
                         GoblinStateTextUpdate();
-                        if (CanSeePlayer())
-                        {
-                            currentState = GoblinState.MoveTowardsPlayer;
-                        }
+
                     }
                 }
                 else
@@ -71,6 +65,10 @@ public class GoblinStateManager : MonoBehaviour
         }
         else if (currentState == GoblinState.Patrol)
         {
+            if (CanSeePlayer())
+            {
+                currentState = GoblinState.MoveTowardsPlayer;
+            }
             Patrol();
         }
         else if (currentState == GoblinState.MoveTowardsPlayer)
@@ -99,6 +97,7 @@ public class GoblinStateManager : MonoBehaviour
 
     private void Patrol()
     {
+        GetComponent<Animator>().SetBool("Walking", true);
         if (patrolPoints.Count == 0)
         {
             GameObject PatrolPoint = new GameObject("PatrolPoint");
@@ -106,12 +105,12 @@ public class GoblinStateManager : MonoBehaviour
             patrolPoints.Add(PatrolPoint.transform);
             return;
         }
-
+        
         Vector3 targetPosition = patrolPoints[currentPatrolIndex].transform.position;
         Vector3 direction = targetPosition - transform.position;
         direction.Normalize();
         gameObject.transform.Translate(direction * moveSpeed * Time.deltaTime );
-
+        FlipSprite(direction);
 
         direction.Normalize();
 
@@ -129,19 +128,17 @@ public class GoblinStateManager : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        if (CanSeePlayer())
-        {
-            Vector3 direction = player.position - transform.position;
+        GetComponent<Animator>().SetBool("Walking", true);
+        Vector3 direction = player.position - transform.position;
 
 
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-            transform.Translate(direction * moveSpeed * Time.deltaTime);
-        }
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        FlipSprite(direction);
+        transform.Translate(direction * moveSpeed * Time.deltaTime);
     }
-        void OnTriggerEnter2D(Collider2D collision)
-        {
+    void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.CompareTag("Player"))
         {
             if (currentState == GoblinState.MoveTowardsPlayer)
@@ -150,5 +147,14 @@ public class GoblinStateManager : MonoBehaviour
             }
 
         }
-        }
+    }
+    private void FlipSprite(Vector3 direction)
+    {
+        // Determine if the goblin is moving right or left
+        bool movingRight = direction.x > 0f;
+
+        // Flip the sprite accordingly
+        GetComponent<SpriteRenderer>().flipX = !movingRight;
+    }
 }
+
