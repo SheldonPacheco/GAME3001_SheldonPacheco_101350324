@@ -34,6 +34,7 @@ public class GoblinStateManager : MonoBehaviour
         if (currentState == GoblinState.Idle)
         {
             GetComponent<Animator>().SetBool("Walking", false);
+            //CanSeePlayer();
             if (CanSeePlayer())
             {
                 currentState = GoblinState.MoveTowardsPlayer;
@@ -65,10 +66,6 @@ public class GoblinStateManager : MonoBehaviour
         }
         else if (currentState == GoblinState.Patrol)
         {
-            if (CanSeePlayer())
-            {
-                currentState = GoblinState.MoveTowardsPlayer;
-            }
             Patrol();
         }
         else if (currentState == GoblinState.MoveTowardsPlayer)
@@ -78,16 +75,30 @@ public class GoblinStateManager : MonoBehaviour
     }
     private bool CanSeePlayer()
     {
-        Vector3 direction = player.position - transform.position; 
-        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, lineOfSightDistance, playerLayer))
+        Vector2 direction;
+        bool flipped = GetComponent<SpriteRenderer>().flipX;
+        if (flipped)
         {
-            if (hit.collider.CompareTag("Player"))
+            direction = -transform.right;
+        }
+        else
+        {
+            direction = transform.right;
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, lineOfSightDistance, playerLayer);
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.gameObject.name);
+            if (hit.collider.CompareTag("Player") && !hit.collider.CompareTag("Goblin"))
             {
                 return true;
             }
         }
+
         return false;
     }
+
 
 
     private void GoblinStateTextUpdate()
@@ -118,11 +129,20 @@ public class GoblinStateManager : MonoBehaviour
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         lineOfSightVisual.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        if (direction.magnitude <= moveSpeed * Time.deltaTime)
+        if (Vector3.Distance(transform.position, targetPosition) <= 0.1f)
         {
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Count;
-            currentState = GoblinState.Idle;
+            FlipSprite(direction);
             patrolPoints.RemoveAt(currentPatrolIndex);
+            if (CanSeePlayer())
+            {
+                currentState = GoblinState.MoveTowardsPlayer;
+            } else
+            {
+                idleTimer = idleTime;
+                currentState = GoblinState.Idle;
+            }
+
         }
     }
 
@@ -132,8 +152,10 @@ public class GoblinStateManager : MonoBehaviour
         Vector3 direction = player.position - transform.position;
 
 
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        lineOfSightVisual.transform.position = transform.position;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        lineOfSightVisual.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         FlipSprite(direction);
         transform.Translate(direction * moveSpeed * Time.deltaTime);
     }
@@ -150,10 +172,10 @@ public class GoblinStateManager : MonoBehaviour
     }
     private void FlipSprite(Vector3 direction)
     {
-        // Determine if the goblin is moving right or left
+
         bool movingRight = direction.x > 0f;
 
-        // Flip the sprite accordingly
+
         GetComponent<SpriteRenderer>().flipX = !movingRight;
     }
 }
