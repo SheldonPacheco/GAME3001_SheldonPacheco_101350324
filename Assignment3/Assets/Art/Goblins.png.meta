@@ -422,7 +422,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Goblins_0: -3757547826733318397
+      Goblins_1: -1360579524249385558
+      Goblins_10: 4426031245293351206
+      Goblins_2: -8015644767988548548
+      Goblins_3: -9092662844504015702
+      Goblins_4: -148724802853021735
+      Goblins_5: -6453215221723857510
+      Goblins_6: -3703271685072514305
+      Goblins_7: -1474701725510520778
+      Goblins_8: 1804984797735263853
+      Goblins_9: -6122903385437482886
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,154 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+public class GoblinStateManager : MonoBehaviour
+{
+    public List<Transform> patrolPoints;
+    public float moveSpeed = 1f;
+    public float rotationSpeed = 2f;
+    public float idleTime = 5f;
+    public float PatrolTime = 5f;
+    public float lineOfSightDistance = 10f;
+    public LayerMask playerLayer;
+
+    public enum GoblinState { Idle, Patrol, MoveTowardsPlayer };
+    public GoblinState currentState = GoblinState.Idle;
+    public int currentPatrolIndex = 0;
+    public Transform player;
+    public float idleTimer = 0f;
+    public TMP_Text GoblinStateText;
+    public GameObject lineOfSightVisual;
+
+    public static GoblinStateManager Instance { get; private set; }
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        Instance = this;
+    }
+
+    void Update()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (currentState == GoblinState.Idle)
+        {
+            if (CanSeePlayer())
+            {
+                currentState = GoblinState.MoveTowardsPlayer;
+                GoblinStateTextUpdate();
+            }
+            else
+            {
+                if (idleTimer <= 0f)
+                {
+                    if (Random.Range(0, 2) == 0)
+                    {
+                        currentState = GoblinState.Idle;
+                        GoblinStateTextUpdate();
+                        idleTimer = idleTime;
+                        if (CanSeePlayer())
+                        {
+                            currentState = GoblinState.MoveTowardsPlayer;
+                        }
+                    }
+                    else
+                    {
+                        currentState = GoblinState.Patrol;
+                        GoblinStateTextUpdate();
+                        if (CanSeePlayer())
+                        {
+                            currentState = GoblinState.MoveTowardsPlayer;
+                        }
+                    }
+                }
+                else
+                {
+                    idleTimer -= Time.deltaTime;
+                    GoblinStateTextUpdate();
+                }
+            }
+        }
+        else if (currentState == GoblinState.Patrol)
+        {
+            Patrol();
+        }
+        else if (currentState == GoblinState.MoveTowardsPlayer)
+        {
+            MoveTowardsPlayer();
+        }
+    }
+    private bool CanSeePlayer()
+    {
+        Vector3 direction = player.position - transform.position; 
+        if (Physics.Raycast(transform.position, direction, out RaycastHit hit, lineOfSightDistance, playerLayer))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    private void GoblinStateTextUpdate()
+    {
+        GoblinStateText.text =  "NPC State: " + currentState.ToString() + " |  Idle timer:" + idleTimer;
+    }
+
+    private void Patrol()
+    {
+        if (patrolPoints.Count == 0)
+        {
+            GameObject PatrolPoint = new GameObject("PatrolPoint");
+            PatrolPoint.transform.position = player.position;
+            patrolPoints.Add(PatrolPoint.transform);
+            return;
+        }
+
+        Vector3 targetPosition = patrolPoints[currentPatrolIndex].transform.position;
+        Vector3 direction = targetPosition - transform.position;
+        direction.Normalize();
+        gameObject.transform.Translate(direction * moveSpeed * Time.deltaTime );
+
+
+        direction.Normalize();
+
+        lineOfSightVisual.transform.position = transform.position;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        lineOfSightVisual.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (direction.magnitude <= moveSpeed * Time.deltaTime)
+        {
+            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Count;
+            currentState = GoblinState.Idle;
+            patrolPoints.RemoveAt(currentPatrolIndex);
+        }
+    }
+
+    private void MoveTowardsPlayer()
+    {
+        if (CanSeePlayer())
+        {
+            Vector3 direction = player.position - transform.position;
+
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
+        }
+    }
+        void OnTriggerEnter2D(Collider2D collision)
+        {
+        if (collision.CompareTag("Player"))
+        {
+            if (currentState == GoblinState.MoveTowardsPlayer)
+            {
+                SceneManager.LoadScene("GameoverScene");
+            }
+
+        }
+        }
+}

@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip walkingSound;
     public AudioClip goalReached;
     public AudioClip buttonPress;
+    public AudioClip deathMusic;
     public static SoundManager Instance { get; private set; }
     void Awake()
     {
